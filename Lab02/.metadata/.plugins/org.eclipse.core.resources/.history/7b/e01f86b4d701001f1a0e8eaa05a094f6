@@ -1,0 +1,30 @@
+
+public class Cart {
+	public static final int MAX_NUMBERS_ORDERED = 20;
+	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+	private int qtyOrdered;
+	
+	public boolean isFull() {
+		return (qtyOrdered >= MAX_NUMBERS_ORDERED) ? true : false;
+	}
+	
+	public void addDigitalVideoDisc(DigitalVideoDisc disc) {
+		if(isFull()) {
+			System.out.println("Your order is full!");
+            System.out.println("Unable to complete order!");
+            return;
+		}
+		qtyOrdered++;
+		itemsOrdered[qtyOrdered-1] = disc;
+	}
+	
+	public int find(DigitalVideoDisc disc) {
+		for(int i = 0; i < qtyOrdered; i++) {
+			if(!disc.equals(itemsOrdered[i])) {
+				continue;
+			}
+			return i;
+		}
+		return -1;
+	}
+}
